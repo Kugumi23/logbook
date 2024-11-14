@@ -10,21 +10,21 @@ class visitorsController extends Controller
     //
     public function index(){
         $visitors = visitors::all();
-        return view('display_visitors',['visitors'=>$visitors]);    
+        return view('index');    
     }
 
     public function store(Request $request){
         $validasi = $request->validate([
-            'nama_teknisi'      => 'required|size:50',
-            'nama_vendor'       => 'required|in:TELKOM,ICONNET,BIZNET',
-            'keterangan'        => 'required|size:150'
+            'nama_teknisi'      => 'required|string|max:50',
+            'nama_vendor'       => 'required|string|in:TELKOM,ICONNET,BIZNET',
+            'keterangan'        => 'required|string|max:150'
         ]);
 
         $visitors = new Visitors();
         $visitors->nama_teknisi = $validasi['nama_teknisi'];
         $visitors->nama_vendor = $validasi['nama_vendor'];
         $visitors->waktu_kedatangan = now();
-        $visitors->waktu_kepulangan = now();
+        $visitors->waktu_kepulangan = null;
         $visitors->keterangan = $validasi['keterangan'];
         $visitors->save();
     }

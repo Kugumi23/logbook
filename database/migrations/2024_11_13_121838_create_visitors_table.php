@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_teknisi');
             $table->string('nama_vendor');
             $table->datetime('waktu_kedatangan');
-            $table->datetime('waktu_kepulangan');
+            $table->datetime('waktu_kepulangan')->nullable();
             $table->string('keterangan');
             $table->timestamps();
         });
