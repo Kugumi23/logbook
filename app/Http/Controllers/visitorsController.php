@@ -9,7 +9,6 @@ class visitorsController extends Controller
 {
     //
     public function index(){
-        $visitors = visitors::all();
         return view('index');    
     }
 
@@ -27,9 +26,16 @@ class visitorsController extends Controller
         $visitors->waktu_kepulangan = null;
         $visitors->keterangan = $validasi['keterangan'];
         $visitors->save();
+
+        return redirect()->route('visitors.index')->with('success','Data telah tersimpan');
     }
 
     public function create(){
         return view('logbook');
+    }
+
+    public function showAll(){
+        $result = visitors::all();
+        return view('history',['visitors'=>$result]);
     }
 }

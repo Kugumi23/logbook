@@ -9,7 +9,7 @@
     <h3>Menu</h3>
     <ul>
         <li><a href="{{ route('visitors.create') }}">Logbook </a></li>
-
+        <li><a href="{{ route('visitors.showAll') }}">History</a></li>
     </ul>
 </body>
 </html>
