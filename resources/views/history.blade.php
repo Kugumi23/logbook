@@ -20,7 +20,6 @@
         </thead>
         <tbody>
             @forelse ($visitors as $data)
-                @if ($data->waktu_kepulangan != null)
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$data->nama_teknisi}}</td>
@@ -29,7 +28,6 @@
                     <td>{{$data->waktu_kepulangan}}</td>
                     <td>{{$data->keterangan}}</td>
                 </tr>
-                @endif
             @empty
             <tr>
                 <td colspan="6" align="center">tidak ada data yang ditampilkan</td>
