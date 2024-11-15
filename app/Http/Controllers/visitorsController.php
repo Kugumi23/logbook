@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\visitors;
+
 
 class visitorsController extends Controller
 {
@@ -22,7 +24,7 @@ class visitorsController extends Controller
         $visitors = new Visitors();
         $visitors->nama_teknisi = $validasi['nama_teknisi'];
         $visitors->nama_vendor = $validasi['nama_vendor'];
-        $visitors->waktu_kedatangan = now();
+        $visitors->waktu_kedatangan = Carbon::now('Asia/Pontianak');
         $visitors->waktu_kepulangan = null;
         $visitors->keterangan = $validasi['keterangan'];
         $visitors->save();
@@ -48,7 +50,7 @@ class visitorsController extends Controller
         $id_teknisi = $request->id_teknisi;
         $result = visitors::where('id', $id_teknisi)
         ->update([
-               'waktu_kepulangan' => now(),
+               'waktu_kepulangan' => Carbon::now('Asia/Pontianak'),
         ]);
         if ($result){
             return redirect()->route('visitors.index')->with('success','Data telah di upadate');
