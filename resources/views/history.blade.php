@@ -20,14 +20,16 @@
         </thead>
         <tbody>
             @forelse ($visitors as $data)
-            <tr>
-                <td>{{$loop->iteration}}</td>
-                <td>{{$data->nama_teknisi}}</td>
-                <td>{{$data->nama_vendor}}</td>
-                <td>{{$data->waktu_kedatangan}}</td>
-                <td>{{$data->waktu_kepulangan}}</td>
-                <td>{{$data->keterangan}}</td>
-            </tr>
+                @if ($data->waktu_kepulangan != null)
+                <tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$data->nama_teknisi}}</td>
+                    <td>{{$data->nama_vendor}}</td>
+                    <td>{{$data->waktu_kedatangan}}</td>
+                    <td>{{$data->waktu_kepulangan}}</td>
+                    <td>{{$data->keterangan}}</td>
+                </tr>
+                @endif
             @empty
             <tr>
                 <td colspan="6" align="center">tidak ada data yang ditampilkan</td>
