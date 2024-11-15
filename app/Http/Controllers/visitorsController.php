@@ -50,7 +50,10 @@ class visitorsController extends Controller
         ->update([
                'waktu_kepulangan' => now(),
         ]);
-
-        return redirect()->route('visitors.index');
+        if ($result){
+            return redirect()->route('visitors.index')->with('success','Data telah di upadate');
+        } else {
+            return redirect()->route('visitors.index')->with('error','Data gagal diupdate');
+        }
     }
 }
