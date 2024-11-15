@@ -10,6 +10,7 @@
     <ul>
         <li><a href="{{ route('visitors.create') }}">Logbook </a></li>
         <li><a href="{{ route('visitors.showAll') }}">History</a></li>
+        <li><a href="{{ route('visitors.foredit') }}">Update</a></li>
     </ul>
 </body>
 </html>

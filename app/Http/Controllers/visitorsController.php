@@ -38,4 +38,19 @@ class visitorsController extends Controller
         $result = visitors::all();
         return view('history',['visitors'=>$result]);
     }
+
+    public function foredit(){
+        $result = visitors::all();
+        return view('progress',['visitors'=>$result]);
+    }
+
+    public function update(Request $request){
+        $id_teknisi = $request->id_teknisi;
+        $result = visitors::where('id', $id_teknisi)
+        ->update([
+               'waktu_kepulangan' => now(),
+        ]);
+
+        return redirect()->route('visitors.index');
+    }
 }
